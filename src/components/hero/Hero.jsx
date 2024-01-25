@@ -46,8 +46,8 @@ const Hero = ({state}) => {
                             </Row>
                     </ModalBody>
                 </Modal>
-
                 <button className="msg-btn" onClick={() => setModal(true)}>Get in Touch</button>
+                
                 {/*  =========popup bootstrap end==========  */}
 
             </div>

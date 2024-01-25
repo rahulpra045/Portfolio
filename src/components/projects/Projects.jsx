@@ -8,7 +8,7 @@ import "./Projects.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const Projects = ({state}) => {
+const Projects = ({ state }) => {
     const [modal, setModal] = useState(false);
     const [projects, setProjects] = useState("");
 
@@ -20,7 +20,7 @@ const Projects = ({state}) => {
         }
         contract && projectDetails();
     }, [state])
-    
+
     const donateEth = async (event) => {
         event.preventDefault(); //to prevent reloading after clicking send button and transaction wi'll not done
         try {
@@ -33,7 +33,7 @@ const Projects = ({state}) => {
         }
         catch (error) {
             alert("Transaction not Succesfull");
-            
+
         }
     }
     return (
@@ -41,42 +41,42 @@ const Projects = ({state}) => {
             <h1 className="title">Projects </h1>
             <div className="card-wrapper">
                 {projects !== "" && projects.map((project) => {
-                     const githubLink=`https://github.com/rahulpra045/${project.githubLink}`
-                    return ( <a key={project.id}  href= {githubLink} className="project-card" target='_blank' rel="noopener noreferrer" >
-                    <div className="card-img">
-                        <img src={`https://gateway.pinata.cloud/ipfs/${project.image}`} alt="" /></div>
-                    <div className="card-text">
+                    const githubLink = `https://github.com/rahulpra045/${project.githubLink}`
+                    return (<a key={project.id} href={githubLink} className="project-card" target='_blank' rel="noopener noreferrer" >
+                        <div className="card-img">
+                            <img src={`https://gateway.pinata.cloud/ipfs/${project.image}`} alt="" /></div>
+                        <div className="card-text">
                             <h3>{project.name}</h3>
-                        <p>{project.description}</p>
-                    </div>
-                </a>)
-                })} 
-           
-            </div>
- {/*  =========popup bootstrap==========  */}
+                            <p>{project.description}</p>
+                        </div>
+                    </a>)
+                })}
 
- <Modal size='md' isOpen={modal} toggle={() => setModal(!modal)}>
-                        <ModalHeader toggle={() => setModal(!modal)}>
-                            Enter the ETH you want to donate!
-                        </ModalHeader>
-                        <ModalBody>
-                            <form onSubmit={donateEth}>
-                                <Row>
-                                    <input id="eth" type="text" />
-                                        <Button className='mt-4' >
-                                            Send
-                                        </Button>
-                                </Row>
-                            </form>
-                        </ModalBody>
-                    </Modal>
-                    {/*  =========popup bootstrap end==========  */}
-                    <p className='donate' onClick={() => setModal(true)}>Liked the project&apos;s ? Consider donating Eth&apos;s <FaDonate className='icon' /></p>
+            </div>
+            {/*  =========popup bootstrap==========  */}
+
+            <Modal size='md' isOpen={modal} toggle={() => setModal(!modal)}>
+                <ModalHeader toggle={() => setModal(!modal)}>
+                    Enter the ETH you want to donate!
+                </ModalHeader>
+                <ModalBody>
+                    <form onSubmit={donateEth}>
+                        <Row>
+                            <input id="eth" type="text" />
+                            <Button className='mt-4' >
+                                Send
+                            </Button>
+                        </Row>
+                    </form>
+                </ModalBody>
+            </Modal>
+            {/*  =========popup bootstrap end==========  */}
+            <p className='donate' onClick={() => setModal(true)}>Liked the project&apos;s ? Consider donating Eth&apos;s <FaDonate className='icon' /></p>
         </section>
     )
 }
 Projects.propTypes = {
     state: PropTypes.object.isRequired,
-  };
+};
 
 export default Projects
