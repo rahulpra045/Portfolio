@@ -39,7 +39,7 @@ const Hero = ({state}) => {
                 <Modal size='md' isOpen={modal} toggle={() => setModal(!modal)}>
                     <ModalBody>
                             <Row className="text-align">
-                                <label htmlFor="" onClick={() => setModal(!modal)}>
+                                <label htmlFor="mail" onClick={() => setModal(!modal)}>
                                     Mail Id - rahulpra045@gmail.com
                                 </label>
 
